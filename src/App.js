@@ -9,9 +9,13 @@ class App extends Component {
     this.state = {
       pseudo: '',
       message: '',
-      response: []
+      userID: '',
+      response: [],
     };
   }
+
+  user = Date.now()    
+  ws = new WebSocket(`ws://localhost:8000/ws/${this.user}`);
 
   handleChange = event => {
       const { name, value } = event.target;
@@ -19,17 +23,19 @@ class App extends Component {
       this.setState({ 
           [name] : value,
       });
+
+      this.state.userID = this.user;
   }
   
-  user = Date.now()
-  ws = new WebSocket(`ws://localhost:8000/ws/${this.user}`);
+  
 
   handleSubmit = async event => {
       event.preventDefault();
 
       const chat = {
           pseudo: this.state.pseudo,
-          message: this.state.message
+          message: this.state.message,
+          userID: this.state.userID
         };
 
       this.ws.send(JSON.stringify(chat));
@@ -44,7 +50,6 @@ class App extends Component {
       this.ws.onmessage = function(event) {
         let data = JSON.parse(event.data);
         this.setState({ response: [...this.state.response, data]});
-        
       }.bind(this);
 
       this.ws.onclose = () => {
@@ -67,7 +72,10 @@ class App extends Component {
           handleChange={this.handleChange}
           handleSubmit= {this.handleSubmit}
         />
-        <Response response={this.state.response}/>
+        <Response 
+          response={this.state.response}
+          userID = {this.user}
+        />
 
       </>
     );

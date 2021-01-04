@@ -36,8 +36,8 @@ class ConnectionManager:
 
 manager = ConnectionManager()
 
-@app.websocket("/ws/{pseudo}")
-async def websocket_endpoint(websocket: WebSocket, pseudo: int):
+@app.websocket("/ws/{userID}")
+async def websocket_endpoint(websocket: WebSocket, userID: int):
     await manager.connect(websocket)
     try:
         while True:

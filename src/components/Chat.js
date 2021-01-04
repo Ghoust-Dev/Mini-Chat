@@ -15,6 +15,7 @@ export default ({ msg, pseudo, handleChange, handleSubmit }) => {
                             className="form-control col-sm-8 " 
                             onChange={handleChange}
                             placeholder="Enter the Pseudo"
+                            required
                         >
                         </input>
                     </div>
@@ -26,6 +27,7 @@ export default ({ msg, pseudo, handleChange, handleSubmit }) => {
                             className="form-control col-sm-8" 
                             onChange={handleChange}
                             placeholder="Enter your message"
+                            required
                         >
                         </input>
                     </div>
