@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+/* import { BrowserRouter, Route, Switch } from 'react-router-dom'; */
 import Chat from './components/Chat';
 import Response from './components/Response';
 
@@ -66,16 +67,26 @@ class App extends Component {
   render() {
     return (
       <>
-        <Chat 
-          msg={this.state.msg}
-          pseudo={this.state.pseudo}
-          handleChange={this.handleChange}
-          handleSubmit= {this.handleSubmit}
-        />
-        <Response 
-          response={this.state.response}
-          userID = {this.user}
-        />
+      {/* <BrowserRouter>
+        <Switch>
+          <Route path="/"> */}
+            <Chat 
+              msg={this.state.msg}
+              pseudo={this.state.pseudo}
+              handleChange={this.handleChange}
+              handleSubmit= {this.handleSubmit}
+            />
+          {/* </Route>
+          <Route path="/chat"> */}
+            <Response 
+              response={this.state.response}
+              userID = {this.user}
+            />
+          {/* </Route>
+        </Switch>
+      </BrowserRouter> */}
+        
+        
 
       </>
     );
