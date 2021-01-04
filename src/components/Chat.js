@@ -12,7 +12,7 @@ export default ({ msg, pseudo, handleChange, handleSubmit }) => {
                         <input 
                             type="text" 
                             name="pseudo" 
-                            className="form-control col-sm-8 col-md-8" 
+                            className="form-control col-sm-8 " 
                             onChange={handleChange}
                             placeholder="Enter the Pseudo"
                         >
@@ -29,7 +29,12 @@ export default ({ msg, pseudo, handleChange, handleSubmit }) => {
                         >
                         </input>
                     </div>
-                    <button type="submit" className="btn btn-success">Envoyer</button>
+                    <button 
+                        type="submit" 
+                        className="btn btn-success"
+                    >
+                        Envoyer <i className="fa fa-paper-plane"></i>
+                    </button>
                 </form>
 
                 
